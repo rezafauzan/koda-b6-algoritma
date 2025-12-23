@@ -1,16 +1,16 @@
 ```mermaid
 flowchart TD
 
-a@{"shape":"circle",  "label": "Mulai"}
-b@{"shape":"lean-l",  "label": "Angka"}
+start@{"shape":"circle",  "label": "Mulai"}
+b@{"shape":"lean-l",  "label": "Input: Angka"}
 c@{"shape":"diamond",  "label": "Angka % 3 === 0"}
-d@{"shape":"lean-r",  "label": "Bilangan Ganjil"}
+d@{"shape":"lean-l",  "label": "Output: #quot;Bilangan Ganjil#quot;"}
 e@{"shape":"diamond",  "label": "Angka % 2 === 0"}
-f@{"shape":"lean-r",  "label": "Bilangan Genap"}
-g@{"shape":"lean-r",  "label": "Bukan Angka"}
+f@{"shape":"lean-l",  "label": "Output: #quot;Bilangan Genap#quot;"}
+g@{"shape":"lean-l",  "label": "Output: #quot;Bukan Angka#quot;"}
 h@{"shape":"dbl-circ",  "label": "Selesai"}
 
-a-->b-->c--False-->e--True-->f-->h
+start-->b-->c--False-->e--True-->f-->h
 c--True-->d-->h
-e--False-->g
+e--False-->g-->h
 ```
