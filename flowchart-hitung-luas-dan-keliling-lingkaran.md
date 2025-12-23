@@ -9,7 +9,7 @@ d@{"shape":"rectangle",  "label": "pi = 3.14"}
 e@{"shape":"rectangle",  "label": "keliling = 2 * pi * jari-jari"}
 f@{"shape":"lean-l",  "label": "Output: #quot;Kelilingnya adalah#quot; + keliling"}
 g@{"shape":"rectangle",  "label": "luas = pi * jari-jari * jari-jari"}
-h@{"shape":"lean-l",  "label": "Output: #quot;Luasnya adalah#quot; + keliling"}
+h@{"shape":"lean-l",  "label": "Output: #quot;Luasnya adalah#quot; + luas"}
 
 i@{"shape":"dbl-circ",  "label": "Selesai"}
 
