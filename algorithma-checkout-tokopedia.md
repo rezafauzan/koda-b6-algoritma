@@ -3,44 +3,32 @@
 ## Algorithma Descriptive
 
 1. Mulai
-2. membuka laman produk yang diinginkan
-3. tekan tombol beli sekarang
-4. pastikan pengguna sudah login
-5. jika ya munculkan popup untuk masukan variasi dan kuantitas produk yang diinginkan kemudian konfirmasi untuk masuk laman pembayaran 
-6. jika tidak arahkan ke laman login
-7. pilih alamat
-8. pilih metode pengiriman
-9. pilih metode pembayaran
-11. konfirmasi pembelian dengan klik tombol bayar sekarang
-10. lakukan pembayaran dengan metode yang dipilih
-11. jika pembayaran berhasil maka pesanan diteruskan ke penjual untuk dikirim
-12. jika pembayaran tidak berhasil maka kirim notifikasi pembelian gagal dan lakukan refund
-13. Selesai
+2. Pilih produk
+3. Jika ingin Masukan produk ke keranjang jika ingin membeli banyak produk berbeda
+4. jika tidak masuk ke laman form pembayaran 
+5. atur alamat penerima
+6. pilih metode pengiriman
+7. pilih metode pembayaran
+8. lakukan pembayaran
+9. setelah pembayaran pesanan akan diproses
+10. Selesai
 
 ## Flowchart Checkout Tokopedia
 ```mermaid
 flowchart TD
 
 start@{"shape": circle, "label": "Mulai"}
-home@{"shape": rectangle, "label": "Masuk Halaman Beranda Tokopedia"}
-toProduct@{"shape": rectangle, "label": "Membuka laman produk yang diinginkan"}
-ctaBuyNow@{"shape": lean-l, "label": "Input: #quot;Tekan Tombol Tombol Beli Sekarang#quot;"}
-isLogin@{"shape": diamond, "label": "userLogin == True"}
-outputFalseIsLogin@{"shape": rectangle, "label": "Arahkan untuk login atau daftar!"}
-outputTrueIsLogin@{"shape": rectangle, "label": "Munculkan Popup untuk memilih variasi dan kuantitas"}
-ctaConfirm@{"shape": lean-l, "label": "Input: #quot;Tekan Tombol Lanjutkan ke Pembayaran#quot;"}
-toPayment@{"shape": rectangle, "label": "Menuju Laman Pembayaran"}
-paymentPage@{"shape": lean-l, "label": "Input: #quot;Atur#quot; alamat, Metode Pengiriman, Metode Pembayaran"}
-confirmPayment@{"shape": lean-l, "label": "Input: #quot;Tekan Tombol Bayar Sekarang#quot;"}
-doPayment@{"shape": lean-l, "label": "Input: #quot;lakukan pembayaran dengan metode yang dipilih#quot;"}
-isPaymentSuccess@{"shape": diamond, "label": "payment == #quot;success#quot;"}
-outputPaymentSuccess@{"shape": lean-l, "label": "Output: #quot;Pembayaran berhasil pesanan diteruskan ke penjual untuk diproses#quot;"}
-outputPaymentFailed@{"shape": lean-l, "label": "Output: #quot;Pembayaran gagal atau habis waktu apabila sudah melakukan pembayaran maka akan di refund#quot;"}
+inputProduct@{"shape": lean-l, "label": "Input: produk"}
+isAddToCart@{"shape": diamond, "label": addToCart === true}
+isAddToCartTrue@{"shape": rectangle, "label": Cart += produk}
+setPayment@{"shape": lean-l, "label": "Input: metodePembayaran, alamat, metodePengiriman"}
+setOrder@{"shape": lean-l, "label": "Output: #quot;Pesanan Dibuat Menunggu Pembayaran#quot;"}
+isPayment@{"shape": diamond, "label": isPaid === True}
+isPaymentTrue@{"shape": lean-l, "label": "Output: #quot;Pesanan Diproses#quot;"}
 stop@{"shape": dbl-circ, "label": "Selesai"}
 
+start-->inputProduct-->isAddToCart--True-->isAddToCartTrue-->setPayment-->setOrder-->isPayment--True-->isPaymentTrue-->stop
 
-start-->home-->toProduct-->ctaBuyNow-->isLogin--True-->outputTrueIsLogin-->ctaConfirm-->toPayment-->paymentPage-->confirmPayment-->doPayment-->isPaymentSuccess--True-->outputPaymentSuccess-->stop
-
-isLogin--False-->outputFalseIsLogin-->stop
-isPaymentSuccess-->False-->outputPaymentFailed-->stop
+isAddToCart--False-->setPayment
+isPayment--False-->setOrder
 ```
